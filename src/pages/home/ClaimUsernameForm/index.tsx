@@ -1,6 +1,7 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Button, Text, TextInput } from "@ignite-ui/react";
 import { ArrowRight } from "lucide-react";
+import { useRouter } from "next/router";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { Form, FormAnnotation } from "./styles";
@@ -21,26 +22,29 @@ export function ClaimUsernameForm() {
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    formState: { errors, isSubmitting },
   } = useForm<ClaimUsernameFormData>({
     resolver: zodResolver(claimUsernameFormSchema),
   });
 
+  const router = useRouter();
+
   async function handlerClaimUsername(data: ClaimUsernameFormData) {
-    console.log(data);
+    const { username } = data;
+
+    await router.push(`/register?username=${username}`);
   }
 
   return (
     <>
       <Form as="form" onSubmit={handleSubmit(handlerClaimUsername)}>
         <TextInput
-          crossOrigin={undefined}
           {...register("username")}
           size="sm"
           prefix="ignite.com/"
           placeholder="seu-usuario"
         />
-        <Button size="sm" type="submit">
+        <Button size="sm" type="submit" disabled={isSubmitting}>
           Reservar
           <ArrowRight />
         </Button>
