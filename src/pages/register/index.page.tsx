@@ -1,3 +1,4 @@
+import { api } from "@/lib/axios";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Button, Heading, MultiStep, Text, TextInput } from "@ignite-ui/react";
 import { ArrowRight } from "lucide-react";
@@ -43,7 +44,14 @@ export default function Register() {
   }, [router.query?.username, setValue]);
 
   async function handleRegister(data: RegisterFormData) {
-    console.log(data);
+    try {
+      await api.post("/users", {
+        name: data.name,
+        username: data.username,
+      });
+    } catch (err) {
+      console.log(err);
+    }
   }
 
   return (
