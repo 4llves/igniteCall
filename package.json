@@ -9,9 +9,10 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@auth/prisma-adapter": "^2.5.3",
     "@hookform/resolvers": "^3.9.0",
     "@ignite-ui/react": "^2.2.4",
-    "@prisma/client": "^5.19.1",
+    "@prisma/client": "^5.20.0",
     "axios": "^1.7.7",
     "lucide-react": "^0.441.0",
     "next": "14.2.12",
