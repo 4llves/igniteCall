@@ -75,6 +75,7 @@ export default function Register() {
       </Header>
 
       <Form as="form" onSubmit={handleSubmit(handleRegister)}>
+        {/* biome-ignore lint/a11y/noLabelWithoutControl: <explanation> */}
         <label>
           <Text size="sm">Nome do usuário</Text>
           <TextInput
@@ -88,6 +89,7 @@ export default function Register() {
           )}
         </label>
 
+        {/* biome-ignore lint/a11y/noLabelWithoutControl: <explanation> */}
         <label>
           <Text size="sm">Nome completo</Text>
           <TextInput placeholder="Seu nome" {...register("name")} />
