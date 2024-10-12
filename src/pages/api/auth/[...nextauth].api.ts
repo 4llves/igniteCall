@@ -1,13 +1,13 @@
 import { PrismaAdapter } from '@/lib/auth/prisma-adapter'
 // biome-ignore lint/style/useImportType: <explanation>
-import { NextApiRequest, NextApiResponse } from 'next'
+import { NextApiRequest, NextApiResponse, NextPageContext } from 'next'
 import NextAuth, { type NextAuthOptions } from 'next-auth'
 import GoogleProvider from 'next-auth/providers/google'
 import { signIn } from 'next-auth/react'
 
 export function buildNextAuthOptions(
-  req: NextApiRequest,
-  res: NextApiResponse
+  req: NextApiRequest | NextPageContext['req'],
+  res: NextApiResponse | NextPageContext['res']
 ): NextAuthOptions {
   return {
     adapter: PrismaAdapter(req, res),
