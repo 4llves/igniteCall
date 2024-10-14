@@ -3,6 +3,7 @@ import { Container, UserHeader } from "./styles";
 // biome-ignore lint/style/useImportType: <explanation>
 import { GetStaticPaths, GetStaticProps } from "next";
 import { prisma } from "@/lib/prisma";
+import { ScheduleForm } from "./ScheduleForm/index.page";
 
 interface ScheduleProps {
   user: {
@@ -20,6 +21,8 @@ export default function Schedule({ user }: ScheduleProps) {
         <Heading>{user.name}</Heading>
         <Text>{user.bio}</Text>
       </UserHeader>
+
+      <ScheduleForm />
     </Container>
   );
 }
