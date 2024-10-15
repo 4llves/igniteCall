@@ -1,4 +1,4 @@
-import { ArrowBigLeft, ArrowBigRight } from "lucide-react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import {
   CalendarActions,
   CalendarBody,
@@ -21,46 +21,46 @@ export function Calendar() {
 
         <CalendarActions>
           <button type="button">
-            <ArrowBigLeft />
+            <ChevronLeft />
           </button>
 
           <button type="button">
-            <ArrowBigRight />
+            <ChevronRight />
           </button>
         </CalendarActions>
-
-        <CalendarBody>
-          <thead>
-            <tr>
-              {shortWeekDays.map((weekDay) => (
-                <th key={weekDay}>{weekDay}.</th>
-              ))}
-            </tr>
-          </thead>
-
-          <tbody>
-            <tr>
-              <td>{}</td>
-              <td>{}</td>
-              <td>
-                <CalendarDay>1</CalendarDay>
-              </td>
-              <td>
-                <CalendarDay>2</CalendarDay>
-              </td>
-              <td>
-                <CalendarDay>3</CalendarDay>
-              </td>
-              <td>
-                <CalendarDay>4</CalendarDay>
-              </td>
-              <td>
-                <CalendarDay>5</CalendarDay>
-              </td>
-            </tr>
-          </tbody>
-        </CalendarBody>
       </CalendarHeader>
+
+      <CalendarBody>
+        <thead>
+          <tr>
+            {shortWeekDays.map((weekDay) => (
+              <th key={weekDay}>{weekDay}.</th>
+            ))}
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+            <td>{""}</td>
+            <td>{""}</td>
+            <td>
+              <CalendarDay>1</CalendarDay>
+            </td>
+            <td>
+              <CalendarDay>2</CalendarDay>
+            </td>
+            <td>
+              <CalendarDay>3</CalendarDay>
+            </td>
+            <td>
+              <CalendarDay>4</CalendarDay>
+            </td>
+            <td>
+              <CalendarDay>5</CalendarDay>
+            </td>
+          </tr>
+        </tbody>
+      </CalendarBody>
     </CalendarContainer>
   );
 }
