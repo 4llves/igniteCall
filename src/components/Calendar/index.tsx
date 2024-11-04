@@ -26,6 +26,7 @@ type CalendarWeeks = CalendarWeek[];
 
 interface BlockedDates {
   blockedWeekDays: number[];
+  blockedDates: number[];
 }
 
 interface CalendarProps {
@@ -59,8 +60,8 @@ export function Calendar({ selectedDate, onDateSelected }: CalendarProps) {
 
   const username = String(router.query.username);
 
-  const getYear = currentDate.get("year");
-  const getMonth = currentDate.get("month");
+  const getYear = currentDate.get("year") + 1;
+  const getMonth = currentDate.get("month") + 1;
 
   const { data: blockedDates } = useQuery<BlockedDates>({
     queryKey: ["blocked-dates", getYear, getMonth],
@@ -116,7 +117,8 @@ export function Calendar({ selectedDate, onDateSelected }: CalendarProps) {
           date,
           disabled:
             date.endOf("day").isBefore(new Date()) ||
-            blockedDates.blockedWeekDays.includes(date.get("day")),
+            blockedDates.blockedWeekDays.includes(date.get("day")) ||
+            blockedDates.blockedDates.includes(date.get("date")),
         };
       }),
       ...nextMonthFillArray.map((date) => {
