@@ -60,7 +60,7 @@ export function Calendar({ selectedDate, onDateSelected }: CalendarProps) {
 
   const username = String(router.query.username);
 
-  const getYear = currentDate.get("year") + 1;
+  const getYear = currentDate.get("year");
   const getMonth = currentDate.get("month") + 1;
 
   const { data: blockedDates } = useQuery<BlockedDates>({
